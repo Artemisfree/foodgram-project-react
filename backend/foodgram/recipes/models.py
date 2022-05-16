@@ -6,14 +6,29 @@ from users.models import User
 
 
 class Ingredient(models.Model):
+    MEASUREMENT_CHOISES = (
+        ('kg', 'kg'),
+        ('g', 'g'),
+        ('slices', 'slices'),
+        ('tablespoon', 'tablespoon'),
+        ('teaspoon', 'teaspoon'),
+        ('glass', 'glass'),
+        ('pinch', 'pinch'),
+        ('pieces', 'pieces'),
+        ('ml', 'ml'),
+        ('l', 'l'),
+        ('to taste', 'to taste'),
+    )
     name = models.CharField(
         max_length=200,
         verbose_name='Название продуктов',
         help_text='Введите название продуктов')
     measurement_unit = models.CharField(
         max_length=200,
+        choices=MEASUREMENT_CHOISES,
+        default='g',
         verbose_name='Единицы измерения',
-        help_text='Введите единицы измерения')
+        help_text='Выберете единицы измерения')
 
     class Meta:
         verbose_name = 'Продукт'
@@ -61,14 +76,17 @@ class Recipe(models.Model):
     )
     image = models.ImageField(
         verbose_name='Изображение',
-        upload_to='recipes/image/',
+        upload_to='v1/recipes/image/',
         help_text='Выберите изображение рецепта'
     )
     text = models.TextField(
         verbose_name='Описание рецепта',
         help_text='Добавьте описание рецепта')
     cooking_time = models.IntegerField(
-        validators=[MinValueValidator(1)],
+        validators=(MinValueValidator(
+            1,
+            message='Минимальное время приготовления - одна минута',
+        ),),
         verbose_name='Время приготовления',
         help_text='Укажите время приготовления'
     )
@@ -115,10 +133,10 @@ class Cart(models.Model):
     class Meta:
         verbose_name = 'Корзина'
         verbose_name_plural = 'Корзины'
-        constraints = [
-            models.UniqueConstraint(fields=['user', 'recipe'],
+        constraints = (
+            models.UniqueConstraint(fields=('user', 'recipe'),
                                     name='unique_cart')
-        ]
+        )
 
     def __str__(self):
         return f'{self.user} {self.recipe}'
@@ -143,10 +161,10 @@ class Subscribe(models.Model):
     class Meta:
         verbose_name = 'Подписка'
         verbose_name_plural = 'Подписки'
-        constraints = [
-            models.UniqueConstraint(fields=['user', 'following'],
+        constraints = (
+            models.UniqueConstraint(fields=('user', 'following'),
                                     name='unique_subscribe')
-        ]
+        )
 
     def __str__(self):
         return f'{self.user} {self.following}'
@@ -175,10 +193,10 @@ class IngredientRecipe(models.Model):
 
     class Meta:
         verbose_name = 'Продукты в рецепте'
-        constraints = [
-            models.UniqueConstraint(fields=['ingredient', 'recipe'],
+        constraints = (
+            models.UniqueConstraint(fields=('ingredient', 'recipe'),
                                     name='unique_ingredientrecipe')
-        ]
+        )
 
     def __str__(self):
         return f'{self.ingredient} {self.recipe}'
@@ -199,10 +217,10 @@ class TagRecipe(models.Model):
 
     class Meta:
         verbose_name = 'Теги рецепта'
-        constraints = [
-            models.UniqueConstraint(fields=['tag', 'recipe'],
+        constraints = (
+            models.UniqueConstraint(fields=('tag', 'recipe'),
                                     name='unique_tagrecipe')
-        ]
+        )
 
     def __str__(self):
         return f'{self.tag} {self.recipe}'
@@ -226,10 +244,10 @@ class Favorite(models.Model):
     class Meta:
         verbose_name = 'Избранный'
         verbose_name_plural = 'Избранные'
-        constraints = [
-            models.UniqueConstraint(fields=['user', 'recipe'],
+        constraints = (
+            models.UniqueConstraint(fields=('user', 'recipe'),
                                     name='unique_favorite')
-        ]
+        )
 
     def __str__(self):
         return f'{self.recipe} {self.user}'

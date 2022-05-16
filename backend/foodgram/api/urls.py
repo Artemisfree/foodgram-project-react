@@ -3,32 +3,35 @@ from rest_framework.routers import DefaultRouter
 
 from .views import (ListViewSet, CreateUserView, FavoriteViewSet,
                     IngredientViewSet, RecipeViewSet, SubscribeViewSet,
-                    TagViewSet, DownloadList)
+                    TagViewSet)
+from .utils import DownloadList
 
 app_name = 'api'
-router = DefaultRouter()
+router_v1 = DefaultRouter()
 
 
-router.register('users', CreateUserView, basename='users')
-router.register(r'tags', TagViewSet, basename='tags')
-router.register(r'recipes', RecipeViewSet, basename='recipes')
-router.register(r'ingredients', IngredientViewSet, basename='ingredients')
+router_v1.register('v1/users', CreateUserView, basename='users')
+router_v1.register(r'v1/tags', TagViewSet, basename='tags')
+router_v1.register(r'v1/recipes', RecipeViewSet, basename='recipes')
+router_v1.register(
+    r'v1/ingredients', IngredientViewSet, basename='ingredients'
+)
 
 
 urlpatterns = [
-    path('users/subscriptions/',
+    path('v1/users/subscriptions/',
          SubscribeViewSet.as_view({'get': 'list'}), name='subscriptions'),
-    path('recipes/download_shopping_list/',
+    path('v1/recipes/download_shopping_list/',
          DownloadList.as_view({'get': 'download'}), name='download'),
-    path('users/<users_id>/subscribe/',
+    path('v1/users/<users_id>/subscribe/',
          SubscribeViewSet.as_view({'post': 'create',
                                    'delete': 'delete'}), name='subscribe'),
-    path('recipes/<recipes_id>/favorite/',
+    path('v1/recipes/<recipes_id>/favorite/',
          FavoriteViewSet.as_view({'post': 'create',
                                   'delete': 'delete'}), name='favorite'),
-    path('recipes/<recipes_id>/shopping_cart/',
+    path('v1/recipes/<recipes_id>/shopping_cart/',
          ListViewSet.as_view({'post': 'create',
                               'delete': 'delete'}), name='list'),
-    path('', include(router.urls)),
+    path('', include(router_v1.urls)),
     path('auth/', include('djoser.urls.authtoken')),
 ]
