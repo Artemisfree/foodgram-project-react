@@ -10,7 +10,7 @@ from users.models import User
 class CommonSubscribed(metaclass=serializers.SerializerMetaclass):
     is_subscribed = serializers.SerializerMethodField()
 
-    def get_is_subscribed(self, obj):
+    def is_subscribed(self, obj):
         request = self.context.get('request')
         if request.user.is_anonymous:
             return False

@@ -23,7 +23,7 @@ class User(AbstractUser):
         max_length=254,
         verbose_name='Электронная почта',
         help_text='Электронная почта пользователя')
-    subscription = models.BooleanField(
+    is_subscribed = models.BooleanField(
         default=False,
         verbose_name='Подписка',
         help_text='Подписка на данного пользователя')
