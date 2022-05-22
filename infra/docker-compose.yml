@@ -24,10 +24,7 @@ services:
       - ./.env
 
   frontend:
-    # image: artemisfree/foodgram_front:latest
-    build:
-      context: ../frontend
-      dockerfile: Dockerfile
+    image: artemisfree/foodgram_frontend:latest
     depends_on:
       - backend
     # restart: always
