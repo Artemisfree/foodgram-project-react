@@ -87,7 +87,6 @@ jobs:
             # sudo docker run --rm -d -p 5000:5000 artemisfree/foodgram
             
             sudo docker-compose stop
-            sudo docker-compose rm web
             rm .env
             touch .env
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
