@@ -77,9 +77,6 @@ jobs:
             # sudo docker stop $(sudo docker ps -a -q)
             # sudo docker run --rm -d -p 5000:5000 artemisfree/foodgram
             
-            ls
-            pwd
-            cat docker-compose.yaml
             sudo docker-compose stop
             sudo docker-compose rm web
             rm .env
