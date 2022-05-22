@@ -13,8 +13,7 @@ services:
     restart: always
 
   backend:
-    image: artemisfree/foodgram:lastest
-    # build: ../backend/
+    image: artemisfree/foodgram:latest
     restart: always
     depends_on:
       - db
@@ -33,8 +32,8 @@ services:
       - backend
     # restart: always
     volumes:
-      # - result_build:/app/result_build/build/
-      - ../frontend/:/app/result_build/
+      - result_build:/app/result_build/build/
+      # - ../frontend/:/app/result_build/
 
   nginx:
     image: nginx:1.21.3-alpine
