@@ -11,8 +11,8 @@ services:
     restart: always
 
   backend:
-    # image: artemisfree/foodgram:latest
-    build: ../backend/
+    image: artemisfree/foodgram:latest
+    # build: ../backend/
     restart: always
     depends_on:
       - db
@@ -23,16 +23,16 @@ services:
       - ./.env
 
   frontend:
-    # image: artemisfree/foodgram_front:latest
-    build:
-      context: ../frontend
-      dockerfile: Dockerfile
+    image: artemisfree/foodgram_front:latest
+    # build:
+    #   context: ../frontend
+    #   dockerfile: Dockerfile
     depends_on:
       - backend
     # restart: always
     volumes:
-      # - result_build:/app/result_build/build/
-      - ../frontend/:/app/result_build/
+      - result_build:/app/result_build/build/
+      # - ../frontend/:/app/result_build/
 
   nginx:
     image: nginx:1.21.3-alpine
