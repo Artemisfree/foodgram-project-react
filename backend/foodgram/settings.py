@@ -18,7 +18,7 @@ SECRET_KEY = os.getenv('TOP_SECRET', default='ic!_l**u_fpvb@sssvwlz702e$3r9l#=jb
 DEBUG = False
 
 # ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '51.250.98.118']
 
 # Application definition
 
