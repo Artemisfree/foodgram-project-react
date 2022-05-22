@@ -5,7 +5,7 @@ services:
   db:
     env_file:
       - .env
-    image: postgres:13.1-alpine
+    image: postgres:13.7-alpine
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     restart: always
@@ -31,7 +31,7 @@ services:
       # - ../frontend/:/app/result_build/
 
   nginx:
-    image: nginx:1.21.3-alpine
+    image: nginx:1.21.6-alpine
     ports:
       - '80:80'
     volumes:
