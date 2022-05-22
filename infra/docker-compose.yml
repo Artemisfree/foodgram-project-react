@@ -13,7 +13,7 @@ services:
     restart: always
 
   backend:
-    image: artemisfree/foodgram:latest
+    image: artemisfree/foodgram:lastest
     # build: ../backend/
     restart: always
     depends_on:
