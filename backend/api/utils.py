@@ -1,12 +1,11 @@
 from django.db.models import Sum
 from django.http import HttpResponse
+from recipes.models import IngredientRecipe
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen import canvas
 from rest_framework import permissions, viewsets
-
-from recipes.models import IngredientRecipe
 
 
 class DownloadList(viewsets.ModelViewSet):
