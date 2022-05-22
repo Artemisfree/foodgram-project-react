@@ -79,7 +79,7 @@ jobs:
             
             ls
             pwd
-            cat docker-compose.yml
+            cat docker-compose.yaml
             sudo docker-compose stop
             sudo docker-compose rm web
             rm .env
