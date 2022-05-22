@@ -6,6 +6,8 @@ services:
     env_file:
       - .env
     image: postgres:13.1-alpine
+    ports: 
+      - '5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     restart: always
@@ -23,16 +25,16 @@ services:
       - ./.env
 
   frontend:
-    image: artemisfree/foodgram_front:latest
-    # build:
-    #   context: ../frontend
-    #   dockerfile: Dockerfile
+    # image: artemisfree/foodgram_front:latest
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
     depends_on:
       - backend
     # restart: always
     volumes:
-      - result_build:/app/result_build/build/
-      # - ../frontend/:/app/result_build/
+      # - result_build:/app/result_build/build/
+      - ../frontend/:/app/result_build/
 
   nginx:
     image: nginx:1.21.3-alpine
