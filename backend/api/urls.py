@@ -26,17 +26,17 @@ router.register(
 
 
 urlpatterns = [
-    path('v1/users/subscriptions/',
+    path('/users/subscriptions/',
          SubscribeViewSet.as_view({'get': 'list'}), name='subscriptions'),
-    path('v1/recipes/download_shopping_list/',
+    path('/recipes/download_shopping_list/',
          DownloadList.as_view({'get': 'download'}), name='download'),
-    path('v1/users/<users_id>/subscribe/',
+    path('/users/<users_id>/subscribe/',
          SubscribeViewSet.as_view({'post': 'create',
                                    'delete': 'delete'}), name='subscribe'),
-    path('v1/recipes/<recipes_id>/favorite/',
+    path('/recipes/<recipes_id>/favorite/',
          FavoriteViewSet.as_view({'post': 'create',
                                   'delete': 'delete'}), name='favorite'),
-    path('v1/recipes/<recipes_id>/shopping_cart/',
+    path('/recipes/<recipes_id>/shopping_cart/',
          ListViewSet.as_view({'post': 'create',
                               'delete': 'delete'}), name='list'),
     path('', include(router.urls)),
