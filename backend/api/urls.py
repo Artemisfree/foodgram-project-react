@@ -9,7 +9,7 @@ app_name = 'api'
 router_v1 = DefaultRouter()
 
 
-router_v1.register('v1/users', CreateUserView, basename='users')
+router_v1.register('users', CreateUserView, basename='users')
 router_v1.register(r'v1/tags', TagViewSet, basename='tags')
 router_v1.register(r'v1/recipes', RecipeViewSet, basename='recipes')
 router_v1.register(
