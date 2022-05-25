@@ -76,3 +76,6 @@ docker-compose exec web python manage.py dumpdata > fixtures.json
 
 ### Сервер
 ip 51.250.98.118
+
+email: tema@tema.tema
+password: tema
