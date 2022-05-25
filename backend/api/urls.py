@@ -39,7 +39,6 @@ urlpatterns = [
     path('v1/recipes/<recipes_id>/shopping_cart/',
          ListViewSet.as_view({'post': 'create',
                               'delete': 'delete'}), name='list'),
-#     path('', include(router_v1.urls)),
     path('', include(router.urls)),
     path('auth/', include('djoser.urls.authtoken')),
 ]
