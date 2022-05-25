@@ -6,15 +6,23 @@ from .views import (CreateUserView, FavoriteViewSet, IngredientViewSet,
                     ListViewSet, RecipeViewSet, SubscribeViewSet, TagViewSet)
 
 app_name = 'api'
-router_v1 = DefaultRouter()
+# router_v1 = DefaultRouter()
+router = DefaultRouter()
 
-
-router_v1.register('users', CreateUserView, basename='users')
-router_v1.register(r'v1/tags', TagViewSet, basename='tags')
-router_v1.register(r'v1/recipes', RecipeViewSet, basename='recipes')
-router_v1.register(
-    r'v1/ingredients', IngredientViewSet, basename='ingredients'
+router.register('users', CreateUserView, basename='users')
+router.register(r'tags', TagViewSet, basename='tags')
+router.register(r'recipes', RecipeViewSet, basename='recipes')
+router.register(
+    r'ingredients', IngredientViewSet, basename='ingredients'
 )
+
+
+# router_v1.register('users', CreateUserView, basename='users')
+# router_v1.register(r'v1/tags', TagViewSet, basename='tags')
+# router_v1.register(r'v1/recipes', RecipeViewSet, basename='recipes')
+# router_v1.register(
+#     r'v1/ingredients', IngredientViewSet, basename='ingredients'
+# )
 
 
 urlpatterns = [
@@ -31,6 +39,7 @@ urlpatterns = [
     path('v1/recipes/<recipes_id>/shopping_cart/',
          ListViewSet.as_view({'post': 'create',
                               'delete': 'delete'}), name='list'),
-    path('', include(router_v1.urls)),
+#     path('', include(router_v1.urls)),
+    path('', include(router.urls)),
     path('auth/', include('djoser.urls.authtoken')),
 ]
