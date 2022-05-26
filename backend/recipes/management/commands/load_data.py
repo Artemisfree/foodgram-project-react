@@ -8,7 +8,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         ingredients_file = open(
-            'recipes/management/commands/data/ingredients.json',
+            'data/ingredients.json',
             encoding='utf-8'
         )
         ingredients_str = ingredients_file.read()
