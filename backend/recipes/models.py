@@ -1,4 +1,4 @@
-import base64
+# import base64
 from colorfield.fields import ColorField
 from django.core.validators import MinValueValidator
 from django.db import models
@@ -78,7 +78,7 @@ class Recipe(models.Model):
         verbose_name='Изображение',
         upload_to='recipes/image/',
         help_text='Выберите изображение рецепта'
-        
+
     )
     text = models.TextField(
         verbose_name='Описание рецепта',
