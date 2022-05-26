@@ -141,7 +141,7 @@ class RecipeSerializerPost(serializers.ModelSerializer,
         many=True)
     ingredients = IngredientAmountRecipeSerializer(
         source='ingredientrecipes', many=True)
-    image = Base64ImageField(max_length=None, use_url=False,)
+    image = Base64ImageField(use_url=True, max_length=None,)
 
     class Meta:
         model = Recipe
