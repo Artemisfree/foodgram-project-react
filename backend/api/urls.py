@@ -29,7 +29,7 @@ router.register(
 urlpatterns = [
     path('users/subscriptions/',
          SubscribeViewSet.as_view({'get': 'list'}), name='subscriptions'),
-    path('recipes/download_shopping_list/',
+    path('recipes/download_shopping_cart/',
          DownloadList.as_view({'get': 'download'}), name='download'),
     path('users/<users_id>/subscribe/',
          SubscribeViewSet.as_view({'post': 'create',
