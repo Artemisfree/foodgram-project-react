@@ -16,8 +16,8 @@ from rest_framework.response import Response
 from users.models import User
 
 from .filters import IngredientSearchFilter, RecipeFilters
-from .serializers import (FavoriteSerializer, IngredientSerializer,
-                          CartSerializer, RecipeSerializer,
+from .serializers import (CartSerializer, FavoriteSerializer,
+                          IngredientSerializer, RecipeSerializer,
                           RecipeSerializerPost, RegistrationSerializer,
                           SubscriptionSerializer, TagSerializer)
 
