@@ -2,8 +2,8 @@ from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
 # from .utils import DownloadList
-from .views import (CreateUserView, DownloadList, FavoriteViewSet,
-                    IngredientViewSet, ListViewSet, RecipeViewSet,
+from .views import (CreateUserView, DownloadCart, FavoriteViewSet,
+                    IngredientViewSet, CartViewSet, RecipeViewSet,
                     SubscribeViewSet, TagViewSet)
 
 app_name = 'api'
@@ -30,7 +30,7 @@ urlpatterns = [
     path('users/subscriptions/',
          SubscribeViewSet.as_view({'get': 'list'}), name='subscriptions'),
     path('recipes/download_shopping_cart/',
-         DownloadList.as_view({'get': 'download'}), name='download'),
+         DownloadCart.as_view({'get': 'download'}), name='download'),
     path('users/<users_id>/subscribe/',
          SubscribeViewSet.as_view({'post': 'create',
                                    'delete': 'delete'}), name='subscribe'),
@@ -38,7 +38,7 @@ urlpatterns = [
          FavoriteViewSet.as_view({'post': 'create',
                                   'delete': 'delete'}), name='favorite'),
     path('recipes/<recipes_id>/shopping_cart/',
-         ListViewSet.as_view({'post': 'create',
+         CartViewSet.as_view({'post': 'create',
                               'delete': 'delete'}), name='list'),
     path('', include(router.urls)),
     path('auth/', include('djoser.urls.authtoken')),

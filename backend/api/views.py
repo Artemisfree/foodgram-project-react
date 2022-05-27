@@ -17,7 +17,7 @@ from users.models import User
 
 from .filters import IngredientSearchFilter, RecipeFilters
 from .serializers import (FavoriteSerializer, IngredientSerializer,
-                          ListSerializer, RecipeSerializer,
+                          CartSerializer, RecipeSerializer,
                           RecipeSerializerPost, RegistrationSerializer,
                           SubscriptionSerializer, TagSerializer)
 
@@ -102,8 +102,8 @@ class BaseFavoriteCartViewSet(viewsets.ModelViewSet):
         return Response(HTTPStatus.NO_CONTENT)
 
 
-class ListViewSet(BaseFavoriteCartViewSet):
-    serializer_class = ListSerializer
+class CartViewSet(BaseFavoriteCartViewSet):
+    serializer_class = CartSerializer
     queryset = Cart.objects.all()
     model = Cart
 
@@ -114,7 +114,7 @@ class FavoriteViewSet(BaseFavoriteCartViewSet):
     model = Favorite
 
 
-class DownloadList(viewsets.ModelViewSet):
+class DownloadCart(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     @staticmethod
