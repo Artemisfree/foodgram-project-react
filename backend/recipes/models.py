@@ -6,26 +6,26 @@ from users.models import User
 
 
 class Ingredient(models.Model):
-    MEASUREMENT_CHOISES = (
-        ('kg', 'kg'),
-        ('g', 'g'),
-        ('slices', 'slices'),
-        ('tablespoon', 'tablespoon'),
-        ('teaspoon', 'teaspoon'),
-        ('glass', 'glass'),
-        ('pinch', 'pinch'),
-        ('pieces', 'pieces'),
-        ('ml', 'ml'),
-        ('l', 'l'),
-        ('to taste', 'to taste'),
-    )
+    # MEASUREMENT_CHOISES = (
+    #     ('kg', 'kg'),
+    #     ('g', 'g'),
+    #     ('slices', 'slices'),
+    #     ('tablespoon', 'tablespoon'),
+    #     ('teaspoon', 'teaspoon'),
+    #     ('glass', 'glass'),
+    #     ('pinch', 'pinch'),
+    #     ('pieces', 'pieces'),
+    #     ('ml', 'ml'),
+    #     ('l', 'l'),
+    #     ('to taste', 'to taste'),
+    # )
     name = models.CharField(
         max_length=200,
         verbose_name='Название продуктов',
         help_text='Введите название продуктов')
     measurement_unit = models.CharField(
         max_length=200,
-        choices=MEASUREMENT_CHOISES,
+        # choices=MEASUREMENT_CHOISES,
         default='g',
         verbose_name='Единицы измерения',
         help_text='Выберете единицы измерения')
@@ -74,12 +74,13 @@ class Recipe(models.Model):
         verbose_name='Название рецепта',
         help_text='Введите название рецепта'
     )
-    image = models.ImageField(
-        verbose_name='Изображение',
-        upload_to='recipes/image/',
-        help_text='Выберите изображение рецепта'
+    image = models.ImageField(upload_to='image/', verbose_name='Изображение')
+    # image = models.ImageField(
+    #     verbose_name='Изображение',
+    #     upload_to='recipes/image/',
+    #     help_text='Выберите изображение рецепта'
 
-    )
+    # )
     text = models.TextField(
         verbose_name='Описание рецепта',
         help_text='Добавьте описание рецепта')
