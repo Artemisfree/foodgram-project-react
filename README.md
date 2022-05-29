@@ -63,9 +63,9 @@ docker-compose up -d --build
 Выполните миграции, создайте суперпользователя, соберите статику:
 
 ```
-docker-compose exec web python manage.py migrate
-docker-compose exec web python manage.py createsuperuser
-docker-compose exec web python manage.py collectstatic --no-input
+docker-compose exec backend python manage.py migrate
+docker-compose exec backend python manage.py createsuperuser
+docker-compose exec backend python manage.py collectstatic --no-input
 ```
 
 Создайте дамп (резервную копию) базы:
@@ -79,5 +79,3 @@ ip 51.250.98.118
 
 email: tema@tema.tema
 password: tema
-Артем, не получается вывести картинки, они появляются в админке, теги сделал
-Не знаю, как решить проблему 
