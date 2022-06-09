@@ -20,13 +20,3 @@ class Command(BaseCommand):
                 name=name,
                 measurement_unit=measurement_unit,
             )
-
-    # def handle(self, *args, **options):
-    #     with open('data/ingredients.json', 'rb') as f:
-    #         data = json.load(f)
-    #         for i in data:
-    #             ingredient = Ingredient()
-    #             ingredient.name = i['name']
-    #             ingredient.measurement_unit = i['measurement_unit']
-    #             ingredient.save()
-    #             print(i['name'], i['measurement_unit'])

@@ -1,5 +1,4 @@
 from djoser.serializers import UserCreateSerializer
-# from drf_extra_fields.fields import Base64ImageField
 from recipes.models import (Cart, Favorite, Ingredient, IngredientRecipe,
                             Recipe, Subscribe, Tag, TagRecipe)
 from rest_framework import serializers
@@ -50,7 +49,6 @@ class CommonSubscribed(metaclass=serializers.SerializerMetaclass):
         if Subscribe.objects.filter(
                 user=request.user, following__id=obj.id).exists():
             return True
-        # else:
         return False
 
 
@@ -65,7 +63,6 @@ class CommonRecipe(metaclass=serializers.SerializerMetaclass):
         if Favorite.objects.filter(user=request.user,
                                    recipe__id=obj.id).exists():
             return True
-        # else:
         return False
 
     def get_is_in_shopping_cart(self, obj):

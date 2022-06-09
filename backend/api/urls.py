@@ -1,13 +1,11 @@
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
-# from .utils import DownloadList
 from .views import (CartViewSet, CreateUserView, DownloadCart, FavoriteViewSet,
                     IngredientViewSet, RecipeViewSet, SubscribeViewSet,
                     TagViewSet)
 
 app_name = 'api'
-# router_v1 = DefaultRouter()
 router = DefaultRouter()
 
 router.register('users', CreateUserView, basename='users')
@@ -16,14 +14,6 @@ router.register(r'recipes', RecipeViewSet, basename='recipes')
 router.register(
     r'ingredients', IngredientViewSet, basename='ingredients'
 )
-
-
-# router_v1.register('users', CreateUserView, basename='users')
-# router_v1.register(r'v1/tags', TagViewSet, basename='tags')
-# router_v1.register(r'v1/recipes', RecipeViewSet, basename='recipes')
-# router_v1.register(
-#     r'v1/ingredients', IngredientViewSet, basename='ingredients'
-# )
 
 
 urlpatterns = [

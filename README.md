@@ -20,19 +20,11 @@
 docker -v
 ```
 
-Клонируйте репозиторий и перейдите в него в командной строке:
+Клонируйте репозиторий и перейдите в него в командной строке
 
-```
-https://github.com/AlinaVoskoboynikova/infra_sp2.git
-cd infra_sp2
-```
 
 Перейдите в папку с проектом и создайте и активируйте виртуальное окружение:
 
-```
-cd api_yamdb
-python3 -m venv env
-```
 
 ```
 source venv/Scripts/activate
@@ -73,9 +65,3 @@ docker-compose exec backend python manage.py collectstatic --no-input
 ```
 docker-compose exec web python manage.py dumpdata > fixtures.json
 ```
-
-### Сервер
-ip 51.250.98.118
-
-email: tema@tema.tema
-password: tema
